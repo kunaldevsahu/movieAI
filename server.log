@@ -1,0 +1,15 @@
+INFO:     Started server process [45625]
+INFO:     Waiting for application startup.
+/Users/kunaldevsahu/Desktop/TMDB_Movies/venv/lib/python3.11/site-packages/sklearn/base.py:376: InconsistentVersionWarning: Trying to unpickle estimator TfidfTransformer from version 1.6.1 when using version 1.5.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/Users/kunaldevsahu/Desktop/TMDB_Movies/venv/lib/python3.11/site-packages/sklearn/base.py:376: InconsistentVersionWarning: Trying to unpickle estimator TfidfVectorizer from version 1.6.1 when using version 1.5.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:55590 - "GET /movie/trailer/550 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55612 - "GET /movie/trailer/550 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56708 - "GET /movie/trailer/550 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56802 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56827 - "GET /movie/trailer/550 HTTP/1.1" 200 OK
