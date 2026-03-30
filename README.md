@@ -1,283 +1,112 @@
-# 🎬 MovieAI - Intelligent Movie Recommendation System
+# Project: Movie Recommender System Using Machine Learning!
 
-A premium AI-powered movie discovery platform that helps users find their next favorite film using intelligent recommendations, advanced filtering, and seamless search functionality.
+Recommendation systems are becoming increasingly important in today's extremely busy world. People are always short on time with the myriad tasks they need to accomplish in the limited 24 hours. Therefore, the recommendation systems are important as they help them make the right choices, without having to expend their cognitive resources.
 
-## 🌟 Features
+The purpose of a recommendation system basically is to search for content that would be interesting to an individual. Moreover, it involves a number of factors to create personalised lists of useful and interesting content specific to each user/individual. Recommendation systems are Artificial Intelligence based algorithms that skim through all possible options and create a customized list of items that are interesting and relevant to an individual. These results are based on their profile, search/browsing history, what other people with similar traits/demographics are watching, and how likely are you to watch those movies. This is achieved through predictive modeling and heuristics with the data available.
 
-### Core Features
+# Types of Recommendation System :
 
-- **🤖 AI-Powered Recommendations** - Intelligent movie suggestions based on user preferences
-- **🔍 Smart Search** - Search movies by title, genre, or actor with instant results
-- **🎭 Genre Filtering** - Browse movies by multiple genres
-- **⭐ Rating Filter** - Filter movies by minimum rating (0-10)
-- **📅 Release Year Filter** - Discover movies from specific time periods
-- **🎬 Trending Section** - See what's trending in the movie world
-- **📱 Responsive Design** - Optimized for desktop and mobile devices
+### 1 ) Content Based :
 
-### Technical Features
+- Content-based systems, which use characteristic information and takes item attributes into consideration.
 
-- **Premium Dark UI** - Modern design with purple and cyan gradient accents
-- **Real-time Search** - Instant movie search with suggestions
-- **Movie Details** - Comprehensive movie information including ratings, genres, and descriptions
-- **Smooth Animations** - Enhanced UX with CSS animations and transitions
-- **Fast Performance** - Optimized for quick load times
+- Twitter, Youtube.
 
-## 📋 Requirements
+- Which music you are listening, what singer are you watching. Form embeddings for the features.
+- User specific actions or similar items recommendation.
+- It will create a vector of it.
+- These systems make recommendations using a user's item and profile features. They hypothesize that if a user was interested in an item in the past, they will once again be interested in it in the future
+- One issue that arises is making obvious recommendations because of excessive specialization (user A is only interested in categories B, C, and D, and the system is not able to recommend items outside those categories, even though they could be interesting to them).
 
-```
-Python 3.8+
-streamlit>=1.28.0
-requests>=2.31.0
-pandas>=1.5.0
-```
+### 2 ) Collaborative Based :
 
-## 🚀 Installation
+- Collaborative filtering systems, which are based on user-item interactions.
+- Clusters of users with same ratings, similar users.
+- Book recommendation, so use cluster mechanism.
+- We take only one parameter, ratings or comments.
+- In short, collaborative filtering systems are based on the assumption that if a user likes item A and another user likes the same item A as well as another item, item B, the first user could also be interested in the second item.
+- Issues are :
+  - User-Item nXn matrix, so computationally expensive.
 
-### 1. Clone or Navigate to Project
+  - Only famous items will get recommended.
+
+  - New items might not get recommended at all.
+
+### 3 ) Hybrid Based :
+
+- Hybrid systems, which combine both types of information with the aim of avoiding problems that are generated when working with just one kind.
+
+- Combination of both and used nowadays.
+
+- Uses: word2vec, embedding.
+
+# About this project:
+
+This is a streamlit web application that can recommend various kinds of similar movies based on a user's interest.
+
+Here is a demo:
+
+- [Click here to run it live on server](https://github.com/kunaldevsahu/movieAI)
+
+# Dataset has been used:
+
+- [Dataset link](https://www.kaggle.com/tmdb/tmdb-movie-metadata?select=tmdb_5000_movies.csv)
+
+# Concept used to build the model.pkl file : cosine_similarity
+
+1. Cosine Similarity is a metric that allows you to measure the similarity of the documents.
+
+2. In order to demonstrate cosine similarity function we need vectors. Here vectors are numpy array.
+
+3. Finally, Once we have vectors, We can call cosine_similarity() by passing both vectors. It will calculate the cosine similarity between these two.
+
+4. It will be a value between [0,1]. If it is 0 then both vectors are complete different. But in the place of that if it is 1, It will be completely similar.
+
+5. For more details, check URL : https://www.learndatasci.com/glossary/cosine-similarity/
+
+# How to run?
+
+### STEPS:
+
+Clone the repository
 
 ```bash
-cd /Users/kunaldevsahu/Desktop/TMDB_Movies
+git clone https://github.com/kunaldevsahu/movieAI.git
+cd TMDB_Movies
 ```
 
-### 2. Create Virtual Environment
+### STEP 01- Create a virtual environment after opening the repository
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-### 3. Install Dependencies
+```bash
+source venv/bin/activate
+```
+
+### STEP 02- Install the requirements
 
 ```bash
 pip install -r requirement.txt
 ```
 
-### 4. Run the Application
+### STEP 03- Run the backend server
 
-**Frontend (Streamlit UI):**
+```bash
+python main.py
+```
+
+### STEP 04- Run the Streamlit app (in a new terminal)
 
 ```bash
 streamlit run app.py
 ```
 
-**Backend (FastAPI Server):**
+The application will be available at `http://localhost:8501`
 
-```bash
-python main.py
-```
+---
 
-The frontend will be available at `http://localhost:8501`
-The backend API will run at `http://127.0.0.1:8000`
-
-## 📁 Project Structure
-
-```
-TMDB_Movies/
-├── app.py                 # Streamlit frontend application
-├── main.py               # FastAPI backend server
-├── movies.csv            # Movie database
-├── requirement.txt       # Python dependencies
-├── README.md            # Project documentation
-├── __pycache__/         # Python cache files
-└── venv/               # Virtual environment
-```
-
-## 🎯 How to Use
-
-### Home Page
-
-1. **View Featured Movie** - See the AI-picked movie of the day
-2. **Search Movies** - Use the search bar to find specific movies
-3. **Browse by Genre** - Filter movies by your preferred genre
-4. **Set Filters** - Adjust minimum rating and release year
-
-### Search
-
-- Type any movie title, actor name, or genre
-- Results appear instantly with movie details
-- Click on any movie to see more information
-
-### Filtering
-
-- **Genre** - Select from multiple genres (All, Action, Comedy, Drama, etc.)
-- **Minimum Rating** - Filter by IMDb rating (0-10 scale)
-- **Release Year** - Show movies from specific years onwards
-
-### Movie Details
-
-- Rating and review information
-- Genre classification
-- Release year and runtime
-- Movie description and metadata
-
-## 🔧 API Endpoints
-
-The backend provides the following endpoints:
-
-### Movies
-
-- `GET /home` - Get featured movies by category
-- `GET /movie/id/<tmdb_id>` - Get movie details
-- `GET /movie/search` - Search movies with recommendations
-- `GET /tmdb/search` - Search TMDB database
-
-### Recommendations
-
-- `GET /recommend/genre` - Get genre-based recommendations
-- `GET /movie/search` - Get content-based recommendations
-
-## 🎨 Design System
-
-### Color Palette
-
-- **Background**: `#080812` (Deep space black)
-- **Primary**: `#6C5CE7` (Purple)
-- **Accent**: `#00CEC9` (Cyan)
-- **Text**: `#f0eeff` (Off-white)
-- **Muted**: `rgba(240,238,255,0.45)` (Gray)
-
-### Typography
-
-- **Headings**: Bebas Neue (Bold, uppercase)
-- **UI Elements**: Syne (Regular weight)
-- **Body Text**: DM Sans (Regular weight)
-
-## 🔄 Data Source
-
-The application uses:
-
-- **TMDB API** - TheMovieDatabase for movie information
-- **Local CSV** - `movies.csv` for cached/local movie data
-- **FastAPI Backend** - Custom API for recommendations and search
-
-## 📊 Key Components
-
-### Frontend (Streamlit)
-
-- Responsive movie grid layout
-- Real-time search functionality
-- Filter sidebar with sliders and pills
-- Movie card components with hover effects
-- Hero section with featured content
-
-### Backend (FastAPI)
-
-- Movie recommendation engine
-- TF-IDF content-based filtering
-- Genre-based recommendations
-- TMDB API integration
-- Movie search and filtering
-
-## 🎓 Technologies Used
-
-- **Frontend**: Streamlit, HTML/CSS/JavaScript
-- **Backend**: FastAPI, Python
-- **Data**: TMDB API, CSV database
-- **Styling**: Custom CSS with CSS Variables
-- **Animations**: CSS transitions and keyframes
-
-## 🌐 Deployment
-
-To deploy this application:
-
-1. **Streamlit Cloud**
-
-   ```bash
-   streamlit run app.py --server.port 8501
-   ```
-
-2. **Docker** (if needed)
-
-   ```bash
-   docker build -t movieai .
-   docker run -p 8501:8501 movieai
-   ```
-
-3. **Cloud Platforms**
-   - Heroku
-   - AWS
-   - Google Cloud Platform
-   - Azure
-
-## 🐛 Troubleshooting
-
-### API Connection Issues
-
-```bash
-# Check if backend is running
-curl http://127.0.0.1:8000/health
-
-# Restart backend
-python main.py
-```
-
-### Streamlit Not Loading
-
-```bash
-# Clear Streamlit cache
-streamlit cache clear
-
-# Restart application
-streamlit run app.py --logger.level=debug
-```
-
-### Missing Dependencies
-
-```bash
-pip install -r requirement.txt --upgrade
-```
-
-## 📝 Configuration
-
-### API Base URL
-
-Edit in `app.py`:
-
-```python
-API_BASE = "https://movie-rec-466x.onrender.com" or "http://127.0.0.1:8000"
-```
-
-### Page Configuration
-
-```python
-st.set_page_config(
-    page_title="MovieAI — Cinematic Discovery",
-    page_icon="🎬",
-    layout="wide"
-)
-```
-
-## 🤝 Contributing
-
-To contribute to this project:
-
-1. Create a feature branch
-2. Make your changes
-3. Test thoroughly
-4. Submit a pull request
-
-## 📄 License
-
-This project is open source and available under the MIT License.
-
-## 📧 Support
-
-For issues or questions, please open an issue in the project repository or contact the development team.
-
-## 🚀 Future Enhancements
-
-- [ ] User authentication and profiles
-- [ ] Personal watchlists
-- [ ] Rating and review system
-- [ ] Social sharing features
-- [ ] Advanced filtering options
-- [ ] Movie recommendations based on viewing history
-- [ ] Integration with streaming platforms
-- [ ] Mobile app version
-
-## 📚 Resources
-
-- [Streamlit Documentation](https://docs.streamlit.io/)
-- [FastAPI Documentation](https://fastapi.tiangolo.com/)
-- [TMDB API](https://www.themoviedb.org/settings/api)
-- [Movie Dataset](movies.csv)
+**Author**: Kunal Dev Sahu  
+**Data Scientist**  
+**Repository**: [github.com/kunaldevsahu/movieAI](https://github.com/kunaldevsahu/movieAI)
