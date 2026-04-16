@@ -46,7 +46,7 @@ This is a streamlit web application that can recommend various kinds of similar 
 
 Here is a demo:
 
-- [Click here to run it live on server]([https://github.com/kunaldevsahu/movieAI](https://movieai-rec.streamlit.app/))
+- [Click here to run it live on server](https://github.com/kunaldevsahu/movieAI](https://movieai-rec.streamlit.app/))
 
 # Dataset has been used:
 
