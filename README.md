@@ -1,112 +1,125 @@
-# Project: Movie Recommender System Using Machine Learning!
+# 🎬 Movie Recommender System
 
-Recommendation systems are becoming increasingly important in today's extremely busy world. People are always short on time with the myriad tasks they need to accomplish in the limited 24 hours. Therefore, the recommendation systems are important as they help them make the right choices, without having to expend their cognitive resources.
+A full-stack Movie Recommendation web application built using **FastAPI** as the backend API and **Streamlit** as the interactive frontend. The system combines **Machine Learning (TF-IDF Content-Based Filtering)** with real-time data from the **TMDB (The Movie Database) API** to deliver accurate recommendations, movie details, posters, and category feeds.
 
-The purpose of a recommendation system basically is to search for content that would be interesting to an individual. Moreover, it involves a number of factors to create personalised lists of useful and interesting content specific to each user/individual. Recommendation systems are Artificial Intelligence based algorithms that skim through all possible options and create a customized list of items that are interesting and relevant to an individual. These results are based on their profile, search/browsing history, what other people with similar traits/demographics are watching, and how likely are you to watch those movies. This is achieved through predictive modeling and heuristics with the data available.
+---
 
-# Types of Recommendation System :
+## ✨ Key Features
 
-### 1 ) Content Based :
+- 🔍 **Real-time Search & Autocomplete**: Search movies with dynamic keyword matching and instant dropdown suggestions.
+- 🤖 **Content-Based ML Recommendations**: Recommends similar movies based on textual plot and feature similarities using TF-IDF Vectorization and Cosine Similarity.
+- 🎭 **Genre-Based Recommendations**: Discovers popular movies within the same primary genre via TMDB API integration.
+- 🏠 **Curated Home Feeds**: Explore movies by categories: *Trending, Popular, Top Rated, Upcoming,* and *Now Playing*.
+- 📄 **Rich Movie Details**: View high-resolution posters, backdrops, release dates, genres, overviews, and YouTube trailer links.
+- 📱 **Interactive UI**: Responsive poster grid layout with customizable column count and URL query-param routing.
 
-- Content-based systems, which use characteristic information and takes item attributes into consideration.
+---
 
-- Twitter, Youtube.
+## 🛠️ Tech Stack
 
-- Which music you are listening, what singer are you watching. Form embeddings for the features.
-- User specific actions or similar items recommendation.
-- It will create a vector of it.
-- These systems make recommendations using a user's item and profile features. They hypothesize that if a user was interested in an item in the past, they will once again be interested in it in the future
-- One issue that arises is making obvious recommendations because of excessive specialization (user A is only interested in categories B, C, and D, and the system is not able to recommend items outside those categories, even though they could be interesting to them).
+- **Frontend**: Streamlit
+- **Backend API**: FastAPI, Uvicorn, HTTPX
+- **Machine Learning & Data**: Python, Pandas, NumPy, Scikit-Learn (TF-IDF Vectorizer, Cosine Similarity)
+- **Data Source**: TMDB API & Local Movie Dataset
 
-### 2 ) Collaborative Based :
+---
 
-- Collaborative filtering systems, which are based on user-item interactions.
-- Clusters of users with same ratings, similar users.
-- Book recommendation, so use cluster mechanism.
-- We take only one parameter, ratings or comments.
-- In short, collaborative filtering systems are based on the assumption that if a user likes item A and another user likes the same item A as well as another item, item B, the first user could also be interested in the second item.
-- Issues are :
-  - User-Item nXn matrix, so computationally expensive.
+## 📁 Project Structure
 
-  - Only famous items will get recommended.
-
-  - New items might not get recommended at all.
-
-### 3 ) Hybrid Based :
-
-- Hybrid systems, which combine both types of information with the aim of avoiding problems that are generated when working with just one kind.
-
-- Combination of both and used nowadays.
-
-- Uses: word2vec, embedding.
-
-# About this project:
-
-This is a streamlit web application that can recommend various kinds of similar movies based on a user's interest.
-
-Here is a demo:
-
-- [Click here to run it live on server](https://github.com/kunaldevsahu/movieAI](https://movieai-rec.streamlit.app/))
-
-# Dataset has been used:
-
-- [Dataset link](https://www.kaggle.com/tmdb/tmdb-movie-metadata?select=tmdb_5000_movies.csv)
-
-# Concept used to build the model : cosine_similarity
-
-1. Cosine Similarity is a metric that allows you to measure the similarity of the documents.
-
-2. In order to demonstrate cosine similarity function we need vectors. Here vectors are numpy array.
-
-3. Finally, Once we have vectors, We can call cosine_similarity() by passing both vectors. It will calculate the cosine similarity between these two.
-
-4. It will be a value between [0,1]. If it is 0 then both vectors are complete different. But in the place of that if it is 1, It will be completely similar.
-
-5. For more details, check URL : https://www.learndatasci.com/glossary/cosine-similarity/
-
-# How to run?
-
-### STEPS:
-
-Clone the repository
-
-```bash
-git clone https://github.com/kunaldevsahu/movieAI.git
-cd TMDB_Movies
+```text
+TMDB_Movies/
+├── app.py                # Streamlit frontend UI application
+├── main.py               # FastAPI backend server & ML endpoints
+├── data/                 # Datasets & precomputed ML model artifacts
+│   ├── df.pkl            # Pickled DataFrame of processed movies
+│   ├── indices.pkl       # Movie title-to-index lookup mapping
+│   ├── tfidf.pkl         # Trained TF-IDF Vectorizer
+│   ├── tfidf_matrix.pkl  # Precomputed TF-IDF feature matrix
+│   └── movies.csv        # Raw dataset
+├── .env                  # Environment variables (TMDB API Key)
+├── requirement.txt       # Python package dependencies
+└── README.md             # Project documentation
 ```
 
-### STEP 01- Create a virtual environment after opening the repository
+---
 
-```bash
-python -m venv venv
+## 🚀 Getting Started
+
+### 1. Prerequisites
+- Python 3.10+
+- TMDB API Key (Get a free key from [The Movie Database](https://www.themoviedb.org/settings/api))
+
+---
+
+### 2. Environment Setup
+
+Create a `.env` file in the project root directory and add your TMDB API key:
+
+```env
+TMDB_API_KEY=your_tmdb_api_key_here
 ```
 
+---
+
+### 3. Installation
+
+Create and activate a Python virtual environment:
+
 ```bash
+# Create virtual environment
+python3 -m venv venv
+
+# Activate on macOS/Linux
 source venv/bin/activate
+
+# Activate on Windows
+# venv\Scripts\activate
 ```
 
-### STEP 02- Install the requirements
+Install the required dependencies:
 
 ```bash
 pip install -r requirement.txt
 ```
 
-### STEP 03- Run the backend server
+---
+
+### 4. Running the Application
+
+#### Step A: Launch Backend Server (FastAPI)
+Run the backend server in your terminal:
 
 ```bash
-python main.py
+uvicorn main:app --reload
 ```
+*The FastAPI backend will run on `http://127.0.0.1:8000` (Swagger docs available at `http://127.0.0.1:8000/docs`).*
 
-### STEP 04- Run the Streamlit app (in a new terminal)
+#### Step B: Launch Frontend Application (Streamlit)
+Open a **new terminal tab**, activate the virtual environment, and run:
 
 ```bash
+source venv/bin/activate
 streamlit run app.py
 ```
-
-The application will be available at `http://localhost:8501`
+*The Streamlit web interface will launch automatically at `http://localhost:8501`.*
 
 ---
 
-**Author**: Kunal Dev Sahu  
-**Data Scientist**  
-**Repository**: [github.com/kunaldevsahu/movieAI](https://github.com/kunaldevsahu/movieAI)
+## 📡 API Endpoints Summary
+
+| Endpoint | Method | Description |
+| :--- | :--- | :--- |
+| `/health` | `GET` | Health check endpoint |
+| `/home` | `GET` | Get category movie feeds (`trending`, `popular`, `top_rated`, etc.) |
+| `/tmdb/search` | `GET` | Search movies by keyword from TMDB |
+| `/movie/id/{tmdb_id}` | `GET` | Get detailed information for a specific movie |
+| `/movie/trailer/{tmdb_id}` | `GET` | Get YouTube trailer/teaser embed URL & metadata |
+| `/recommend/tfidf` | `GET` | Get content-based ML recommendations using local TF-IDF model |
+| `/recommend/genre` | `GET` | Get genre-based movie recommendations via TMDB |
+| `/movie/search` | `GET` | Bundle endpoint returning details, TF-IDF recs & genre recs |
+
+---
+
+## 👤 Author
+**Kunal Dev Sahu**  
+Repository: [github.com/kunaldevsahu/movieAI](https://github.com/kunaldevsahu/movieAI)
